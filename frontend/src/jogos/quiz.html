@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8c2d667180.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/src/style.css">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1 class="sbtitle">Quiz de Portugol</h1>
+    <main>
+        <section>
+            <div style="margin: 10px;" class="col-md-4 mb-4">
+                <a class="voltar" href="/src/jogos/menu_jogos.html">Voltar</a>
+            </div>
+        </section>
+        <form id="quiz-form">
+            <div id="quiz-container">
+                <div style="color: rgba(255, 255, 255, .75); font-family: 'Rajdhani', sans-serif;font-size: 30px;font-weight: 400;margin: 10px;" id="question-container" class="question"></div>
+                <div id="options-container"></div>
+                <button id="next-button" class="hidden">Próxima Pergunta</button>
+                <button id="restart-button" class="hidden">Refazer Quiz</button>
+              </div>
+        </form>
+    </main>
+    <script>
+        const questions = [
+      { 
+        question: "O que é o Portugol?", 
+        options: ["Um compilador para linguagens de baixo nível.", "Uma linguagem fictícia usada para criar jogos.", "Uma linguagem de programação usada para ensinar lógica de programação.", "Um software para criar gráficos vetoriais."], 
+        correct: "Uma linguagem de programação usada para ensinar lógica de programação." 
+      },
+      { 
+        question: "Qual estrutura de controle é usada para repetir um bloco de código até que uma condição seja atendida?", 
+        options: ["Condicional", "Enquanto", "Escolha-Caso", "Função"], 
+        correct: "Enquanto" 
+      },
+      { 
+        question: "Como declarar uma variável do tipo inteiro no Portugol?", 
+        options: ["int numero;", "numero = inteiro;", "inteiro numero;", "var numero: int;"], 
+        correct: "inteiro numero;" 
+      },
+      {
+        question: "Qual o comando usado para mostrar uma mensagem?",
+        options: ['mostre("Mensagem")','escrever("Mensagem")','print("Mensagem")','escreva("Mensagem")'],
+        correct: 'escreva("Mensagem")'
+      },
+      {
+        question: "Como fazer um comentário de linha única no Portugol?",
+        options: ['// Este é um comentário','# Este é um comentário','/* Este é um comentário */','-- Este é um comentário'],
+        correct: '// Este é um comentário'
+      },
+      {
+        question: "Qual comando é usado para tomar decisões no Portugol?",
+        options: ['entao','se','para','escolha'],
+        correct: 'se'
+      },
+      {
+        question: 'Qual o papel da estrutura "escolha-caso" no Portugol?',
+        options: ['Substituir múltiplos "enquanto".','Substituir múltiplos "se".','Repetir blocos de código indefinidamente.','Declarar variáveis de forma otimizada.'],
+        correct: 'Substituir múltiplos "se".'
+      },
+      {
+        question: "Qual estrutura deve ser usada para um número desconhecido de repetições?",
+        options: ['repita-ate','para','enquanto','escolha-caso'],
+        correct: 'enquanto'
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const questionContainer = document.getElementById('question-container');
+    const optionsContainer = document.getElementById('options-container');
+    const nextButton = document.getElementById('next-button');
+    const restartButton = document.getElementById('restart-button');
+
+    const loadQuestion = () => {
+      const currentQuestion = questions[currentQuestionIndex];
+      questionContainer.textContent = currentQuestion.question;
+      optionsContainer.innerHTML = '';
+      currentQuestion.options.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.onclick = () => handleAnswer(option);
+        optionsContainer.appendChild(button);
+      });
+    };
+
+    const handleAnswer = (selectedOption) => {
+      const currentQuestion = questions[currentQuestionIndex];
+      if (selectedOption === currentQuestion.correct) {
+        score++;
+      }
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        loadQuestion();
+      } else {
+        showResults();
+      }
+    };
+
+    const showResults = () => {
+      questionContainer.textContent = `Você acertou ${score} de ${questions.length}!`;
+      optionsContainer.innerHTML = '';
+      nextButton.classList.add('hidden');
+      restartButton.classList.remove('hidden');
+    };
+
+    restartButton.onclick = () => {
+      currentQuestionIndex = 0;
+      score = 0;
+      restartButton.classList.add('hidden');
+      loadQuestion();
+    };
+
+    // Inicialização do quiz
+    loadQuestion();
+    </script>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+          padding: 20px;
+        }
+        .hidden {
+          display: none;
+        }
+        .question {
+          margin-bottom: 20px;
+        }
+        button {
+          margin: 5px;
+          padding: 10px 20px;
+        }
+      </style>
+</body>
+</html>

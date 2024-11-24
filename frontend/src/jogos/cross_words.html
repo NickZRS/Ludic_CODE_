@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8c2d667180.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/src/style.css">
+    <title>Palavras Cruzadas</title>
+</head>
+<body>
+    <section class="sec">
+        <section>
+            <div style="margin: 10px;" class="col-md-4 mb-4">
+                <a class="voltar" href="/src/jogos/menu_jogos.html">Voltar</a>
+            </div>
+        </section>
+        <h1 class="sbtitle">Palavras Cruzadas</h1>
+        <div class="crossword-container">
+            <div id="crossword-grid" class="crossword-grid"></div>
+        </div>
+        <div class="clues">
+            <h2 style="color: rgba(255, 255, 255, .75); font-family: 'Rajdhani', sans-serif;font-size: 30px;font-weight: 400;">Pistas</h2>
+            <p class="txt1"><strong>Horizontal:</strong></p>
+            <p class="txt1">1.4 - Palavra usada para tomar decisões baseadas em condições(2 letras).</p>
+            <p class="txt1">4.1 - Linguagem usada para aprender lógica de programação de forma estruturada e simples(8 letras).</p>
+            <p class="txt1">5.2 - Usada para criar um laço com início, fim e passo definidos(4 letras).</p>
+            <p class="txt1">7.3 - Tipo de dado para armazenar números sem casas decimais(7 letras).</p>
+            <p class="txt1"><strong>Vertical:</strong></p>
+            <p class="txt1">1.5 - Usada para repetir um bloco de código enquanto uma condição for verdadeira(8 letras).</p>
+            <p class="txt1">3.7 - Comando usado para exibir mensagens ou valores no console(7 letras).</p>
+            <p class="txt1">7.6 - Nome genérico para estruturas de controle como "se" e "senão"(11 letras).</p>
+        </div>
+        <section style="margin-left: 43%;">
+            <button onclick="checkAnswers()">Verificar Respostas</button>
+        </section>
+
+        <!-- Modal -->
+        <div id="resultModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <p id="result"></p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const crossword = [
+          [null, null, null, "S", "E",null, null, null, null],
+          [null, null, null, null, "N", null, null, null, null],
+          [null, null, null, null, "Q", null, "C", null, null],
+          ["P", "O", "R", "T", "U", "G", "O", "L", null],
+          [null, "P", "A", "R", "A", null, "N", null, null],
+          [null, null, null, null, "N", null, "D", null, null],
+          [null, null, "I", "N", "T", "E", "I", "R", "O"],
+          [null, null, null, null, "O", "S", "C", null, null],
+          [null, null, null, null, null, "C", "I", null, null],
+          [null, null, null, null, null, "R", "O", null, null],
+          [null, null, null, null, null, "E", "N", null, null],
+          [null, null, null, null, null, "V", "A", null, null],
+          [null, null, null, null, null, "A", "L", null, null],
+        ];
+
+        // Função para gerar a grade de palavras cruzadas
+        function generateCrossword() {
+          const grid = document.getElementById("crossword-grid");
+          const numRows = crossword.length;
+          const numCols = crossword[0].length;
+
+          grid.style.gridTemplateRows = `repeat(${numRows + 1}, 40px)`;
+          grid.style.gridTemplateColumns = `repeat(${numCols + 1}, 40px)`;
+
+          // Cabeçalho com números das colunas
+          for (let col = 0; col <= numCols; col++) {
+            const cell = document.createElement("div");
+            cell.classList.add("crossword-cell", "index-cell");
+            if (col > 0) cell.textContent = col;
+            grid.appendChild(cell);
+          }
+
+          // Adicionar linhas e células
+          for (let row = 0; row < numRows; row++) {
+            for (let col = 0; col <= numCols; col++) {
+              const cell = document.createElement("div");
+
+              if (col === 0) {
+                // Primeira coluna: índices das linhas
+                cell.classList.add("crossword-cell", "index-cell");
+                cell.textContent = row + 1;
+              } else {
+                // Células da grade
+                cell.classList.add("crossword-cell");
+                const crosswordValue = crossword[row][col - 1];
+                if (crosswordValue) {
+                  const input = document.createElement("input");
+                  input.maxLength = 1;
+                  input.dataset.row = row;
+                  input.dataset.col = col - 1;
+                  input.style.width = "35px";
+                  input.style.height = "38px";
+                  input.style.border = "none";
+                  input.style.textAlign = "center";
+                  input.style.fontSize = "18px";
+                  input.style.outline = "none";
+                  cell.appendChild(input);
+                } else {
+                  cell.style.backgroundColor = "#eaeaea"; // Bloquear células
+                }
+              }
+              grid.appendChild(cell);
+            }
+          }
+        }
+
+        // Função para verificar respostas
+        function checkAnswers() {
+          const inputs = document.querySelectorAll("#crossword-grid input");
+          let correct = true;
+
+          inputs.forEach((input) => {
+            const row = parseInt(input.dataset.row);
+            const col = parseInt(input.dataset.col);
+            const expected = crossword[row][col]?.toUpperCase();
+            const userAnswer = input.value.toUpperCase();
+
+            if (userAnswer !== expected) {
+              correct = false;
+              input.style.backgroundColor = "#f88"; // Indicar erro
+            } else {
+              input.style.backgroundColor = "#8f8"; // Indicar acerto
+            }
+          });
+
+          const result = document.getElementById("result");
+          result.textContent = correct
+            ? "Parabéns! Você completou corretamente!"
+            : "Ainda há erros. Tente novamente!";
+          
+          // Exibir o modal
+          openModal();
+        }
+
+        // Função para abrir o modal
+        function openModal() {
+          document.getElementById("resultModal").style.display = "block";
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+          document.getElementById("resultModal").style.display = "none";
+        }
+
+        // Gerar a grade ao carregar a página
+        generateCrossword();
+    </script>
+</body>
+</html>
+
+<style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .crossword-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .crossword-grid {
+      display: grid;
+      position: relative;
+    }
+    .crossword-cell {
+      width: 40px;
+      height: 40px;
+      border: 1px solid black;
+      text-align: center;
+      font-size: 18px;
+      line-height: 40px;
+      position: relative;
+    }
+    .index-cell {
+      background-color: rgb(45, 43, 43);
+      color: rgb(255, 255, 255, .75);
+    }
+
+    .clues {
+      margin-top: 20px;
+      text-align: left;
+      display: inline-block;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    /* Estilo do Modal */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto; 
+      background-color: rgb(0,0,0); 
+      background-color: rgba(0,0,0,0.4); 
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: rgb(66, 61, 61);
+      margin: 5% auto;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 40px;
+      font-weight: 500;
+      color: rgb(255, 255, 255,.75);
+      padding: 20px;
+      box-shadow: 8px 8px rgb(45, 43, 43);
+      width: 80%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .close-btn {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+</style>

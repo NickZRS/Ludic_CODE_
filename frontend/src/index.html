@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8c2d667180.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+    <title>Ludic.CODE</title>
+</head>
+<body>
+  <header>
+    <div class="title-box">
+      <h1 class="title">LUDIC.code</h1>
+    </div>
+    <div class="topnav" id="myTopnav">        
+      <a href="/src/index.html" class="active">Home</a>
+      <a href="/src/login.html" id="botao_login">Login</a> 
+      <a href="/src/register.html" id="btn-register">Registrar</a> 
+      <a href="javascript:void(0);" id="btn-logout" style="display: none;" onclick="logout()">Logout</a> <!-- Botão de Logout -->
+      <a href="javascript:void(0);" class="icon" onclick="navBar()">
+      <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </header>
+
+    <main>
+      <section>
+        <h1 class="sbtitle">Bem-vindo ao Mundo Encantado da Programação!</h1>
+        <article class="txt1">
+          Explore nosso conteúdo. <span id="user-status"></span>
+        </article>
+        <article class="txt1">          
+          Você já imaginou aprender a criar seus próprios jogos e histórias incríveis enquanto se diverte? Com o nosso projeto de ensino de Portugol, uma linguagem de programação especialmente desenvolvida para crianças, isso é possível!
+        </article>
+      </section>
+      <a href="/src/login.html" id="botao_comecar"><button type="button" id="btn-login" class="btn btn-outline-danger btn-lg">Começar agora</button></a>
+      <section>
+        <h1 class="sbtitle">Perguntas Frequentes (FAQ)</h1>
+        <a class="effect1">1. O que é Portugol?</a>
+        <article class="txt1">          
+          Portugol é uma linguagem de programação baseada em pseudocódigo, especialmente projetada para facilitar o aprendizado de programação, especialmente para crianças.
+        </article>
+
+        <a class="effect2">2. Como o Portugol pode ajudar meu filho a aprender programação?</a>
+        <article class="txt1">          
+          O Portugol utiliza uma abordagem simplificada e lúdica para ensinar os conceitos básicos de programação, estimulando o pensamento lógico, a criatividade e a resolução de problemas.
+        </article>
+
+        <a class="effect1">3. Meu filho precisa ter conhecimento prévio em programação para começar?</a>
+        <article class="txt1">          
+          Não, o Portugol é projetado para iniciantes e não requer nenhum conhecimento prévio em programação. Nosso material é desenvolvido para ser acessível e divertido para todas as idades.
+        </article>
+
+        <a class="effect2">4. Quais recursos estão disponíveis no site?</a>
+        <article class="txt1">          
+          Oferecemos uma variedade de recursos, incluindo tutoriais interativos, jogos educativos, desafios de programação e histórias cativantes, todos projetados para tornar o aprendizado da programação uma experiência envolvente.
+        </article>
+
+        <a class="effect1">5. Meu filho receberá suporte enquanto aprende Portugol?</a>
+        <article class="txt1">          
+          Sim, estamos aqui para ajudar! Oferecemos suporte por meio de fóruns de discussão, chat ao vivo e recursos de ajuda para garantir que seu filho tenha uma experiência de aprendizado positiva e gratificante.
+        </article>
+
+        <a class="effect2">6. Como posso começar?</a>
+        <article class="txt1">          
+          Basta se inscrever no nosso site e explorar os recursos disponíveis. Não há custo para começar, então não perca tempo e junte-se a nós nesta emocionante jornada de aprendizado de programação!
+        </article>
+      </section>
+    </main>
+
+    
+    <footer>
+      <section class="concepts">
+        <h3 class="f-h3">Ludic.Code</h3>
+        <a class="f-a" href="/src/portugol.html">Portugol</a>
+        <p></p>
+        <a class="f-a" href="/src/prog_log.html">Programação e o ensino de lógica</a>
+      </section>
+      <section class="about-us">
+        <h3 class="f-h3">Sobre nós:</h3>
+            <p class="f-p">Nicolas Oliveira Ribeiro Dos Santos</p>
+            <a style="margin: 5%;" href="https://github.com/nickzrs"><img src="/images/github-logo.png"></a>
+            <a href="https://www.linkedin.com/in/nicolas-oliveira-ribeiro-dos-santos-48475b232/"><img src="/images/linkedin.png"></a>
+            <p class="f-p">Guilherme Kazuo Iamamoto</p>
+            <a style="margin: 5%;" href="https://github.com/GuiKazuo1003"><img src="/images/github-logo.png"></a>
+            <a href="https://www.linkedin.com/in/guilherme-kazuo-iamamoto-221843270/"><img src="/images/linkedin.png"></a>
+      </section>
+    </footer>
+
+
+    <script>
+      // Função de logout
+      function logout() {
+          localStorage.removeItem('authToken'); // Remove o token do localStorage
+          alert('Você saiu da sua conta!');
+          window.location.href = '/src/login.html'; // Redireciona para a página de login
+      }
+
+      // Função para menu responsivo
+      function navBar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+              x.className += " responsive";
+          } else {
+              x.className = "topnav";
+          }
+      }
+
+      // Função para gerenciar a exibição dos botões com base no login
+      window.onload = function() {
+          const authToken = localStorage.getItem('authToken');
+          const btnLogin = document.getElementById('botao_login');
+          const btnRegister = document.getElementById('btn-register');
+          const btnLogout = document.getElementById('btn-logout');
+          const userStatus = document.getElementById('user-status');
+          const btnComecarLink = document.getElementById('botao_comecar');
+
+
+          if (authToken) {
+              // Se o usuário estiver logado, muda o href do botão "Começar agora"
+              btnComecarLink.href = '/src/menu.html'; // Mude para a página desejada
+              
+              // Oculta os botões de login e registro e mostra o logout
+              btnLogin.style.display = 'none';
+              btnRegister.style.display = 'none';
+              btnLogout.style.display = 'inline'; 
+          } else {
+              // Se o usuário não estiver logado, mantém o href padrão
+              btnComecarLink.href = '/src/login.html'; // Página de login
+              userStatus.innerText = "Você não está logado.";
+
+              // Exibe os botões de login e registro, e oculta o logout
+              btnLogin.style.display = 'inline';
+              btnRegister.style.display = 'inline';
+              btnLogout.style.display = 'none';
+          }
+      }
+    </script>
+</body>
+</html>
