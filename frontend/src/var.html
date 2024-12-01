@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8c2d667180.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/ludic_code_csshtml/frontend/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/ludic_code_csshtml/frontend/favicon/favicon-16x16.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+    <title>Ludic.CODE</title>
+</head>
+<body>
+    <header>
+      <div class="title-box">
+        <h1 class="title">LUDIC.code</h1>
+      </div>
+      <div class="topnav" id="myTopnav">        
+        <a href="index.html">Home</a>
+        <a href="/ludic_code_csshtml/frontend/src/login.html">Login</a>
+        <a href="/ludic_code_csshtml/frontend/src/register.html">Registrar</a>
+        <a href="javascript:void(0);" class="icon"  onclick="navBar()">
+        <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="col-md-4 mb-4">
+            <a class="voltar" href="modulo.html">Voltar</a>
+        </div>
+        <h1 class="sbtitle">Variáveis</h1>
+        <article class="txt1">          
+            Variáveis são elementos fundamentais para armazenar e manipular dados durante a execução de um algoritmo. Elas representam espaços na memória que podem guardar diferentes tipos de valores, como números, textos e valores lógicos. O uso de variáveis é essencial para criar programas dinâmicos e interativos.
+        </article>
+
+        <h2 class="sbtitle">
+            Declaração de Variáveis
+        </h2>
+
+        <article class="txt1">
+            Antes de usar uma variável no Portugol, é necessário declará-la, especificando seu nome e tipo de dado. Por exemplo:
+        </article>
+
+        <pre class="code_example">
+            var
+            idade: inteiro
+            nome: caractere
+            salario: real
+            status: logico
+        </pre>
+        <article class="txt1">
+            Neste exemplo:
+        </article>
+
+        <article class="txt1">
+            idade armazena números inteiros (ex.: 25).<br>
+            nome armazena cadeias de caracteres ou texto (ex.: "João").<br>
+            salario armazena números decimais (ex.: 1500.50).<br>
+            status armazena valores lógicos (verdadeiro ou falso).
+        </article>
+
+        <h2  class="sbtitle">
+            Atribuição de Valores
+        </h2>    
+        
+        <article class="txt1">
+            Depois de declaradas, as variáveis podem receber valores usando o operador de atribuição (=). Veja um exemplo:
+        </article>
+
+        <pre class="code_example">
+            inicio
+                idade = 30
+                nome = "Maria"
+                salario = 2500.75
+                status = verdadeiro
+            fim
+        </pre>
+
+        <h2 class="sbtitle">
+            Utilização de Variáveis
+        </h2>
+
+        <article class="txt1">
+            As variáveis podem ser utilizadas em cálculos, exibições e condições. Por exemplo:
+        </article>
+
+        <pre class="code_example">
+            algoritmo "exemplo_variaveis"
+            var
+                numero: inteiro
+            inicio
+                escreva("Digite um número: ")
+                leia(numero)
+                se numero mod 2 = 0 entao
+                    escreva("O número ", numero, " é par.")
+                senao
+                    escreva("O número ", numero, " é ímpar.")
+                fimse
+            fimalgoritmo
+        </pre>
+
+        <article class="txt1">
+            Neste exemplo:
+        </article>
+
+        <article class="txt1">
+            O número digitado pelo usuário é armazenado na variável numero.
+            Uma condição (se) verifica se o número é par ou ímpar usando a operação de módulo (mod).
+            O resultado é exibido com a ajuda da variável.
+        </article>
+
+        <h2 class="sbtitle">
+            Tipos de Dados Comuns no Portugol
+        </h2>
+
+        <article class="txt1">   
+            Inteiro: Para números inteiros (ex.: -5, 0, 42).<br>
+            Real: Para números com ponto decimal (ex.: 3.14, -12.5).<br>
+            Caractere: Para textos ou caracteres individuais (ex.: "Olá", "A").<br>
+            Lógico: Para valores booleanos (verdadeiro ou falso).
+        </article>
+
+
+        <article class="txt1">
+        A simplicidade do Portugol facilita a compreensão de variáveis, pois utiliza uma sintaxe próxima do português natural. Isso permite que iniciantes associem rapidamente os conceitos da programação a ações reais, como armazenar um dado ou verificar uma condição.<br><br>
+        Ferramentas como o Visualg e o Portugol Studio tornam o aprendizado ainda mais prático, pois permitem que os alunos escrevam, testem e depurem seus algoritmos de maneira visual e intuitiva.<br><br>
+        As variáveis no Portugol são a base para entender como os dados são manipulados na programação. Ao aprender a usá-las, os estudantes desenvolvem uma compreensão clara dos princípios fundamentais, como armazenamento, manipulação e uso de informações. Isso os prepara para transitar para linguagens de programação mais complexas com maior facilidade.
+        </article>
+
+      </section>
+    </main>
+
+    
+    <footer>
+        <section class="concepts">
+          <h3 class="f-h3">Ludic.Code</h3>
+          <a class="f-a" href="/ludic_code_csshtml/frontend/src/portugol.html">Portugol</a>
+          <p></p>
+          <a class="f-a" href="/ludic_code_csshtml/frontend/src/prog_log.html">Programação e o ensino de lógica</a>
+        </section>
+        <section class="about-us">
+          <h3 class="f-h3">Sobre nós:</h3>
+              <p class="f-p">Nicolas Oliveira Ribeiro Dos Santos</p>
+              <a style="margin: 5%;" href="https://github.com/nickzrs"><img src="/ludic_code_csshtml/frontend/images/github-logo.png"></a>
+              <a href="https://www.linkedin.com/in/nicolas-oliveira-ribeiro-dos-santos-48475b232/"><img src="/ludic_code_csshtml/frontend/images/linkedin.png"></a>
+              <p class="f-p">Guilherme Kazuo Iamamoto</p>
+              <a style="margin: 5%;" href="https://github.com/GuiKazuo1003"><img src="/ludic_code_csshtml/frontend/images/github-logo.png"></a>
+              <a href="https://www.linkedin.com/in/guilherme-kazuo-iamamoto-221843270/"><img src="/ludic_code_csshtml/frontend/images/linkedin.png"></a>
+        </section>
+      </footer>
+
+
+    <script>
+      function navBar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+          x.className += " responsive";
+          } else {
+          x.className = "topnav";
+          }
+      }
+    </script>
+</body>
+</html>

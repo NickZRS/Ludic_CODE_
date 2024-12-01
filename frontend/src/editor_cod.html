@@ -63,7 +63,7 @@
             jsCode = jsCode.replace(/fimpara/g, '}');
 
             // Substituição do "se...então"
-            jsCode = jsCode.replace(/se \((.+)\) então/g, 'if ($1) {');
+            jsCode = jsCode.replace(/se \((.+)\) entao/g, 'if ($1) {');
 
             // Substituição do "senao"
             jsCode = jsCode.replace(/senao/g, '} else {');
@@ -77,17 +77,28 @@
             // Fechamento de bloco "fimenquanto"
             jsCode = jsCode.replace(/fimenquanto/g, '}');
             
-            // Tradução para variáveis do tipo "inteiro", "real", "logico"
+            // Tradução para variáveis do tipo "inteiro", "real", "logico", "caracter" e "cadeia"(texto)
             jsCode = jsCode.replace(/inteiro (\w+) = (.+)/g, 'let $1 = $2');
             jsCode = jsCode.replace(/real (\w+) = (.+)/g, 'let $1 = $2');
-            jsCode = jsCode.replace(/logico (\w+) = (verdadeiro|falso)/g, 'let $1 = $2 == "verdadeiro" ? true : false');
+            jsCode = jsCode.replace(/logico (\w+) = (verdadeiro|falso)/g, 'let $1 = $2');
+            // Substituição de "verdadeiro" e "falso"
+            jsCode = jsCode.replace(/\bverdadeiro\b/g, 'true');
+            jsCode = jsCode.replace(/\bfalso\b/g, 'false');
+
+            jsCode = jsCode.replace(/cadeia (\w+) = "([^"]*)"/g, 'let $1 = "$2"');
+            jsCode = jsCode.replace(/caracter (\w+) = '(.)'/g, 'let $1 = "$2"');
+
 
             // Tradução para "repita...até"
             jsCode = jsCode.replace(/repita/g, 'do {');
             jsCode = jsCode.replace(/até \((.+)\)/g, '} while ($1);');
 
             // Tradução para "funcao"
-            jsCode = jsCode.replace(/funcao (\w+) (\w+)\((.*)\)/g, 'function $2($3) {');
+            jsCode = jsCode.replace(/funcao \w+ (\w+)\(([\w\s,]+)\)/g, (match, functionName, params) => {
+                const paramsWithoutTypes = params.replace(/\w+ (\w+)/g, '$1');
+                return `function ${functionName}(${paramsWithoutTypes}) {`;
+            });
+
 
             // Fechamento de bloco "fimfuncao"
             jsCode = jsCode.replace(/fimfuncao/g, '}');
