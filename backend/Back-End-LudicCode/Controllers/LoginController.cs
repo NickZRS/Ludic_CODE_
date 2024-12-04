@@ -74,13 +74,13 @@ namespace TCC_Web.Controllers
                     <title>Bem-vindo!</title>
                 </head>
                 <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;'>
-                    <div style='max-width: 600px; margin: auto; background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
-                        <h2 style='color: #4CAF50; text-align: center;'>Bem-vindo à nossa plataforma!</h2>
-                        <p style='font-size: 16px; color: #333;'>Olá,</p>
-                        <p style='font-size: 16px; color: #333;'>Obrigado por se cadastrar em nossa plataforma. Estamos animados para tê-lo(a) conosco!</p>
-                        <p style='font-size: 16px; color: #333;'>Caso tenha dúvidas ou precise de ajuda, não hesite em nos contatar.</p>
+                    <div style='max-width: 600px; margin: auto; background-color: rgb(39, 34, 34); padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
+                        <h2 style='color: rgb(220, 114, 114); text-align: center;'>Bem-vindo à nossa plataforma!</h2>
+                        <p style='font-size: 16px; color: rgba(255, 255, 255, .75);'>Olá,</p>
+                        <p style='font-size: 16px; color: rgba(255, 255, 255, .75);'>Obrigado por se cadastrar em nossa plataforma. Estamos animados para tê-lo(a) conosco!</p>
+                        <p style='font-size: 16px; color: rgba(255, 255, 255, .75);'>Caso tenha dúvidas ou precise de ajuda, não hesite em nos contatar.</p>
                         <div style='text-align: center; margin-top: 20px;'>
-                            <a href='http://127.0.0.1:5501/src/index.html' style='display: inline-block; padding: 10px 20px; font-size: 16px; color: #ffffff; background: #4CAF50; text-decoration: none; border-radius: 5px;'>Visite Nosso Site</a>
+                            <a href='http://127.0.0.1:5501/src/index.html' style='display: inline-block; padding: 10px 20px; font-size: 16px; color: #ffffff; background: rgb(70, 68, 167); text-decoration: none; border-radius: 5px;'>Visite Nosso Site</a>
                         </div>
                         <p style='font-size: 12px; color: #777; margin-top: 20px; text-align: center;'>Este é um e-mail automático, por favor, não responda.</p>
                     </div>
