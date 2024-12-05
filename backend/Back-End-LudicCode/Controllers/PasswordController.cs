@@ -132,7 +132,7 @@ namespace TCC_Web.Controllers
             await _context.SaveChangesAsync();
 
             // Gerar o link para envio por e-mail
-            var resetUrl = $"http://127.0.0.1:5500/src/modify_password.html?token={token}";
+            var resetUrl = $"http://127.0.0.1:5500/ludic_code_csshtml/frontend/src/modify_password.html?token={token}";
 
             // Enviar e-mail usando o EmailService
             string subject = "Redefinição de Senha";

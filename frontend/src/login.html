@@ -90,7 +90,7 @@
       async function login() {
           const username = document.getElementById('user-input').value;
           const password = document.getElementById('password-input').value;
-
+          onload
           const loginData = {
                 Usuario: username,
                 Password: password
@@ -105,6 +105,8 @@
 
                 if (response.ok) {
                     const data = await response.json();
+                    localStorage.setItem('authToken', data.token); 
+
                     alert(data.message);
                     window.location.href = '/ludic_code_csshtml/frontend/src/index.html';
                 } else {

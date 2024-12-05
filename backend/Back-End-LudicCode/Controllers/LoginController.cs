@@ -80,7 +80,7 @@ namespace TCC_Web.Controllers
                         <p style='font-size: 16px; color: rgba(255, 255, 255, .75);'>Obrigado por se cadastrar em nossa plataforma. Estamos animados para tê-lo(a) conosco!</p>
                         <p style='font-size: 16px; color: rgba(255, 255, 255, .75);'>Caso tenha dúvidas ou precise de ajuda, não hesite em nos contatar.</p>
                         <div style='text-align: center; margin-top: 20px;'>
-                            <a href='http://127.0.0.1:5501/src/index.html' style='display: inline-block; padding: 10px 20px; font-size: 16px; color: #ffffff; background: rgb(70, 68, 167); text-decoration: none; border-radius: 5px;'>Visite Nosso Site</a>
+                            <a href='http://127.0.0.1:5500/ludic_code_csshtml/frontend/src/login.html' style='display: inline-block; padding: 10px 20px; font-size: 16px; color: #ffffff; background: rgb(70, 68, 167); text-decoration: none; border-radius: 5px;'>Visite Nosso Site</a>
                         </div>
                         <p style='font-size: 12px; color: #777; margin-top: 20px; text-align: center;'>Este é um e-mail automático, por favor, não responda.</p>
                     </div>
